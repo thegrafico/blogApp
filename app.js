@@ -1,12 +1,11 @@
 //import all class tha we gonna use
 var express 			= require("express"), //servidor
 	mongoose 			= require("mongoose"), //DB
-	expressSanitizer 	= require("express-sanitizer"); //clean all inputs 
+	expressSanitizer 	= require("express-sanitizer"); //clean all inputs
 	methodOverride 	= require("method-override"), // para hacer put y remove request en los form de HTML
 	bodyParse 			= require("body-parser"); //pasar datos a traves de URL y archvios
-
 //transforn express to use it
-var app = express();		
+var app = express();
 
 //======================SETUP==================================
 //create or use own dataBS
@@ -32,7 +31,7 @@ var blogSchema = new mongoose.Schema({
 });
 
 //El modelo de la DB que vamos a usar. con este objeto podemos guardar, borrar y actualizar todo en la DB
-var Blog = mongoose.model("Blog", blogSchema); 
+var Blog = mongoose.model("Blog", blogSchema);
 
 // //create blog test
 // Blog.create({
@@ -54,7 +53,7 @@ app.get("/blogs", function(req, res){
 	Blog.find({}, function(err, blogs){
 		if(!err){
 			//va a cargar el archivo index
-			res.render("index", {blogs: blogs});			
+			res.render("index", {blogs: blogs});
 		}
 	});
 
@@ -78,7 +77,7 @@ app.post("/blogs", function(req, res){
 		if(err){
 			res.render("new");
 		}else{
-			//rediret to index		
+			//rediret to index
 			res.redirect("/blogs");
 		}
 	});
@@ -107,7 +106,7 @@ app.get("/blogs/:id/edit", function(req, res){
 	Blog.findById(id, function(err, foundBlog){
 		//si hay error
 		if(err){
-			res.redirect("/blogs");	
+			res.redirect("/blogs");
 		}else{
 			res.render("edit", {blog: foundBlog});
 		}
@@ -153,7 +152,7 @@ app.delete("/blogs/:id", function(req, res){
 
 //THE MOST IMPORTAN LINE, connect to a host to run
 app.listen(2000, process.env.IP, function(){
-	console.log("SERVER UP!"); 
+	console.log("SERVER UP!");
 });
 //=======================================================
 
@@ -161,4 +160,4 @@ app.listen(2000, process.env.IP, function(){
 // title
 // images
 // body
-//created date 
+//created date
