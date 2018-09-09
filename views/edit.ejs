@@ -1,0 +1,31 @@
+<% include ./partials/header%>
+
+
+<div class="ui main text container segment">
+	<div class="ui huge header">Edit <%=blog.title%></div>
+		<!--Dentro de blog se va a enviar toda la info, como si fuera un array con tiitle, image and text-->
+		<!--HTML no reconoce el PUT request, por lo tanto tenemos que hacer un override para que functione-->
+	<form class="ui form" action="/blogs/<%=blog._id%>?_method=PUT" method="POST">
+		<div class="field">
+			<label>Title</label>	
+			<!--pondremos la etiqueta value para que le de el valor de los datos que tenemos-->
+			<input type="text" name="blog[title]" value="<%=blog.title%>">
+		</div>
+		
+		<div class="field">
+			<label>Image</label>	
+			<input type="text" name="blog[image]" value="<%=blog.image%>">
+		</div>
+			
+		<div class="field">
+			<label>Blog Content</label>
+			<textarea name="blog[body]"><%=blog.body%></textarea>	
+		</div>
+		
+		<input class="ui violet basic button big" type="submit">
+				
+	</form>
+</div>
+
+
+<% include ./partials/footer%>

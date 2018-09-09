@@ -1,0 +1,12 @@
+*creamos nuestro archivo .JSON que va a tener todas nuestras dependencias del archivo
+
+*Instalamos nuestros paquetes que vamos a usar
+	npm install express mongoose body-parser ejs
+
+
+*Creamos nuestras primeras rutas.
+
+*creamos la carpeta 'partials' que va dentro de views y ahi vamos a colocar nuestro header y nuestro footer
+
+
+*Instalamos method-override para que podamos hacer put y remove request ya que los form no lo hacen
